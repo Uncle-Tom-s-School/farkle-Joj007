@@ -1,77 +1,125 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-image: url('https://www.transparenttextures.com/patterns/paper.png'); /* Pergamen hatás */
-    background-color: #f5f5dc; /* Világos bézs szín */
-    font-family: 'Cinzel', serif; /* Középkori betűtípus */
-    color: #4b3d2d; /* Sötétbarna szöveg */
-    margin: 0; /* Eltávolítjuk az alapértelmezett margint */
-  }
-  
-  .App {
+    font-family: 'Garamond', serif; /* Medieval-inspired font */
+    background: url('https://www.transparenttextures.com/patterns/paper.png'); /* Subtle background texture */
+    color: #4E4B3A; /* Dark brown color for text */
+    line-height: 1.6;
+}
+
+/* Main Container */
+.App {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #8B4513; /* SaddleBrown border */
+    background-color: #FDF6E3; /* Light beige for the background */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden; /* To contain children elements like decorations */
+}
+
+/* Header Styles */
+h1 {
     text-align: center;
-    margin: 20px auto; /* Középre igazítjuk */
-    border: 2px solid #8B4513; /* Sötétbarna keret */
-    border-radius: 10px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Árnyék a doboznak */
-    padding: 20px; /* Padding a doboz körül */
-    background-color: rgba(255, 255, 255, 0.8); /* Félig átlátszó háttér */
-  }
-  
-  h1 {
-    color: #8B4513; /* Sötétbarna */
-    font-size: 2.5em; /* Nagyobb betűméret */
-    text-shadow: 2px 2px #ccc; /* Szöveg árnyék */
-  }
-  
-  .p {
-    font-size: 1.2em; /* Nagyobb szöveg méret */
-  }
-  
-  .dice-container {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #8B4513; /* SaddleBrown */
+    text-shadow: 2px 2px 0px #D3B5A0; /* Light brown shadow for depth */
+}
+
+/* Player Score Styles */
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Dice Container */
+.dice-container {
     display: flex;
     justify-content: center;
-    margin: 20px 0; /* Térköz a kockák körül */
-  }
-  
-  .die {
-    font-size: 48px; /* Nagyobb kocka méret */
-    margin: 0 15px; /* Kockák közötti távolság */
-    padding: 20px; /* Kockák belső távolsága */
-    border: 2px solid #8B4513; /* Sötétbarna keret */
-    border-radius: 8px; /* Lekerekített sarkok */
-    background-color: #e7f3ff; /* Világoskék háttér */
-    transition: background-color 0.3s; /* Átmenet a háttér színváltozásakor */
-  }
-  
-  .die:hover {
-    background-color: #add8e6; /* Háttér színváltozás hover esetén */
-  }
-  
-  button {
-    background-color: #8B4513; /* Sötétbarna gomb háttér */
-    color: white; /* Fehér gomb szöveg */
-    border: 2px solid #fff; /* Fehér keret */
-    border-radius: 5px; /* Lekerekített sarkok */
-    padding: 10px 20px; /* Belső távolság a gomb körül */
-    font-size: 16px; /* Gomb szöveg méret */
-    cursor: pointer; /* Kéz kurzor */
-    margin: 10px; /* Margin a gombok között */
-    transition: background-color 0.3s, transform 0.2s; /* Átmenet a háttér színváltozásakor */
-  }
-  
-  button:hover {
-    background-color: #a0522d; /* Sötétebb barna gomb hover esetén */
-    transform: scale(1.05); /* Gomb méretének növelése hover esetén */
-  }
-  
-  button:disabled {
-    background-color: #d3d3d3; /* Szürke gomb, amikor le van tiltva */
-    cursor: not-allowed; /* Nincs engedélyezett kurzor */
-  }
-  
-  .message {
-    color: #a52a2a; /* Barna szöveg szín */
-    font-weight: bold; /* Dőlt szöveg */
-    margin: 20px 0; /* Margin az üzenet körül */
-    font-size: 1.3em; /* Nagyobb üzenet szöveg */
-  }
-  
+    margin: 20px 0;
+    position: relative;
+}
+
+/* Dice Styling */
+.die {
+    background-color: #D3C6B7; /* Light brown for dice */
+    border: 2px solid #8B4513; /* Darker border */
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    margin: 0 10px;
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transitions */
+    cursor: pointer;
+}
+
+.die:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #C2B4A1; /* Darker shade on hover */
+}
+
+.selected {
+    border: 2px solid #FFD700; /* Gold border for selected dice */
+    background-color: #F0E68C; /* Khaki color for selected */
+}
+
+/* Button Styles */
+button {
+    background-color: #8B4513; /* SaddleBrown */
+    color: #FDF6E3; /* Light beige text */
+    font-size: 1.1em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #A0522D; /* Sienna */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Message Styles */
+.message {
+    font-style: italic;
+    text-align: center;
+    margin: 15px 0;
+    color: #8B0000; /* Dark Red for messages */
+}
+
+/* Game Over Section */
+.game-over {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 30px;
+    color: #8B0000; /* Dark Red */
+}
+
+/* New Game Button */
+.new-game-button {
+    background-color: #8B0000; /* Dark Red */
+    color: #FDF6E3; /* Light beige text */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.new-game-button:hover {
+    background-color: #A52A2A; /* Brown color */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
