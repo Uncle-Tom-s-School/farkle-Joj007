@@ -1,0 +1,77 @@
+body {
+    background-image: url('https://www.transparenttextures.com/patterns/paper.png'); /* Pergamen hatás */
+    background-color: #f5f5dc; /* Világos bézs szín */
+    font-family: 'Cinzel', serif; /* Középkori betűtípus */
+    color: #4b3d2d; /* Sötétbarna szöveg */
+    margin: 0; /* Eltávolítjuk az alapértelmezett margint */
+  }
+  
+  .App {
+    text-align: center;
+    margin: 20px auto; /* Középre igazítjuk */
+    border: 2px solid #8B4513; /* Sötétbarna keret */
+    border-radius: 10px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Árnyék a doboznak */
+    padding: 20px; /* Padding a doboz körül */
+    background-color: rgba(255, 255, 255, 0.8); /* Félig átlátszó háttér */
+  }
+  
+  h1 {
+    color: #8B4513; /* Sötétbarna */
+    font-size: 2.5em; /* Nagyobb betűméret */
+    text-shadow: 2px 2px #ccc; /* Szöveg árnyék */
+  }
+  
+  .p {
+    font-size: 1.2em; /* Nagyobb szöveg méret */
+  }
+  
+  .dice-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Térköz a kockák körül */
+  }
+  
+  .die {
+    font-size: 48px; /* Nagyobb kocka méret */
+    margin: 0 15px; /* Kockák közötti távolság */
+    padding: 20px; /* Kockák belső távolsága */
+    border: 2px solid #8B4513; /* Sötétbarna keret */
+    border-radius: 8px; /* Lekerekített sarkok */
+    background-color: #e7f3ff; /* Világoskék háttér */
+    transition: background-color 0.3s; /* Átmenet a háttér színváltozásakor */
+  }
+  
+  .die:hover {
+    background-color: #add8e6; /* Háttér színváltozás hover esetén */
+  }
+  
+  button {
+    background-color: #8B4513; /* Sötétbarna gomb háttér */
+    color: white; /* Fehér gomb szöveg */
+    border: 2px solid #fff; /* Fehér keret */
+    border-radius: 5px; /* Lekerekített sarkok */
+    padding: 10px 20px; /* Belső távolság a gomb körül */
+    font-size: 16px; /* Gomb szöveg méret */
+    cursor: pointer; /* Kéz kurzor */
+    margin: 10px; /* Margin a gombok között */
+    transition: background-color 0.3s, transform 0.2s; /* Átmenet a háttér színváltozásakor */
+  }
+  
+  button:hover {
+    background-color: #a0522d; /* Sötétebb barna gomb hover esetén */
+    transform: scale(1.05); /* Gomb méretének növelése hover esetén */
+  }
+  
+  button:disabled {
+    background-color: #d3d3d3; /* Szürke gomb, amikor le van tiltva */
+    cursor: not-allowed; /* Nincs engedélyezett kurzor */
+  }
+  
+  .message {
+    color: #a52a2a; /* Barna szöveg szín */
+    font-weight: bold; /* Dőlt szöveg */
+    margin: 20px 0; /* Margin az üzenet körül */
+    font-size: 1.3em; /* Nagyobb üzenet szöveg */
+  }
+  
