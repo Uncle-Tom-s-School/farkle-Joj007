@@ -21,31 +21,40 @@ const calculateScore = (dice: DiceRoll): number => {
 
   // Számítás a kockákra: 1-ek, 5-ök és hármasok
   Object.keys(counts).forEach((die) => {
-    const count = counts[parseInt(die)];
-    const num = parseInt(die);
+    const count = counts[parseInt(die)]; //mennyiség
+    const num = parseInt(die)==1 ? 10 : parseInt(die); //key
 
     // Három egyforma kocka esetén pontok
-    if (count >= 3) {
-      if (num === 1) {
-        score += 1000;
-      } else {
-        score += num * 100;
+    if (count==3) {
+      score+=num*100
+    }
+    else if (count==4) {
+      score+=num*200
+    }
+    else if (count==5) {
+      score+=num*400
+    }
+    else if (count==6) {
+      score+=num*800
+    }
+    else if (count== 1 ) {
+      if (num==10||num==5) {
+        score += num*10
+      }
+    }
+    else if (count == 2) {
+      if (num==10||num==5) {
+        score += num*20
       }
     }
 
-    // Egyesek és ötösök külön is pontot érnek
-    if (num === 1) {
-      score += (count % 3) * 100;
-    } else if (num === 5) {
-      score += (count % 3) * 50;
-    }
   });
 
   return score;
 };
 
 const App: React.FC = () => {
-  const [dice, setDice] = useState<DiceRoll>([1, 1, 1, 1, 1, 1]);
+  const [dice, setDice] = useState<DiceRoll>([0, 0, 0, 0, 0, 0]);
   const [lastRoundScore, setLastRoundScore] = useState<number>(0); // Store last round score
   const [playerScores, setPlayerScores] = useState<number[]>([0, 0]);
   const [currentPlayer, setCurrentPlayer] = useState<number>(0); // 0: Player 1, 1: Player 2
@@ -55,7 +64,7 @@ const App: React.FC = () => {
   const [allowDiceSelection, setAllowDiceSelection] = useState<boolean>(true); // New state for selection control
   const [gameOver, setGameOver] = useState<boolean>(false); // New state to track game over condition
 
-  const winningScore = 10000;
+  const winningScore = 3000; 
 
   const handleRoll = () => {
     const keepDice = dice.filter((_, index) => selectedDice[index]); // Get the kept dice
@@ -114,11 +123,12 @@ const App: React.FC = () => {
   const handleNextTurn = () => {
     setCurrentPlayer((currentPlayer + 1) % 2); // Toggle between 0 and 1
     setAllowDiceSelection(true); // Re-enable selection for the new turn
+    setDice([0, 0, 0, 0, 0, 0]);
   };
 
   const handleResetGame = () => {
     // Reset all states for a new game
-    setDice([1, 1, 1, 1, 1, 1]);
+    setDice([0, 0, 0, 0, 0, 0]);
     setLastRoundScore(0);
     setPlayerScores([0, 0]);
     setCurrentPlayer(0);
@@ -126,14 +136,23 @@ const App: React.FC = () => {
     setSelectedDice(Array(6).fill(false));
     setMessage('');
     setGameOver(false); // Reset game over state
+    const lista:string[] = ["https://youtu.be/q3Mmh-w2RD0?si=D_a__NXHwgT3G59t","https://youtu.be/dQw4w9WgXcQ?si=KglH6NV3Rm0bnKEJ","https://youtu.be/iYvv7c61u7E?si=TbzVDmYG8plf8f3c"]
+    window.open(lista[Math.floor(Math.random()*3)]);
   };
 
   return (
     <div className="App">
       <h1>Farkle Game - Two Players</h1>
-      <p>Player 1 Score: {playerScores[0]}</p>
-      <p>Player 2 Score: {playerScores[1]}</p>
-      <p>Current Player: Player {currentPlayer + 1}</p>
+      <div id="player1">
+        <p>Player 1 Score:</p>
+        <p>{playerScores[0]}/{winningScore}</p>
+         
+      </div>
+      <div id="player2">
+        <p>Player 2 Score:</p>
+        <p>{playerScores[1]}/{winningScore}</p>
+      </div>
+      <p>{currentPlayer==1 ? "►" : "◄"}</p>
       <p>Last Roll Score: {lastRoundScore}</p>
       <p>Roll Count: {rollCount}/3</p> {/* Megjelenítjük a dobások számát */}
       <div className="dice-container">
@@ -148,12 +167,12 @@ const App: React.FC = () => {
         ))}
       </div>
       <button onClick={handleRoll} disabled={rollCount >= 3 || gameOver}>Roll Dice</button> {/* Tiltás ha 3 dobás megtörtént vagy a játék véget ért */}
-      <button onClick={handleBank} disabled={lastRoundScore === 0 || gameOver}>
+      <button onClick={handleBank}>
         Bank Score
       </button>
       <p>{message}</p>
       {gameOver && (
-        <div>
+        <div id='gameOverDiv'>
           <h2>Game Over</h2>
           <button onClick={handleResetGame}>Start New Game</button>
         </div>

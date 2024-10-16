@@ -7,18 +7,21 @@
 
 body {
     font-family: 'Garamond', serif; /* Medieval-inspired font */
-    background: url('https://www.transparenttextures.com/patterns/paper.png'); /* Subtle background texture */
+    background: url('images/bg.jpg'); /* Subtle background texture */
     color: #4E4B3A; /* Dark brown color for text */
     line-height: 1.6;
+    font-size: 20px;
+    overflow-y: hidden;
 }
 
 /* Main Container */
 .App {
     max-width: 800px;
-    margin: 50px auto;
+    height: 725px;
+    margin: 200px auto;
     padding: 20px;
     border: 2px solid #8B4513; /* SaddleBrown border */
-    background-color: #FDF6E3; /* Light beige for the background */
+    background-color: #fdf6e35c; /* Light beige for the background */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -38,6 +41,9 @@ h1 {
 p {
     font-size: 1.2em;
     margin: 10px 0;
+    text-align: center;
+    position: relative;
+    top: -175px;
 }
 
 /* Dice Container */
@@ -46,6 +52,7 @@ p {
     justify-content: center;
     margin: 20px 0;
     position: relative;
+    top: -80px;
 }
 
 /* Dice Styling */
@@ -53,12 +60,12 @@ p {
     background-color: #D3C6B7; /* Light brown for dice */
     border: 2px solid #8B4513; /* Darker border */
     border-radius: 5px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
+    font-size: 2.5em;
     margin: 0 10px;
     transition: transform 0.3s, background-color 0.3s; /* Smooth transitions */
     cursor: pointer;
@@ -70,8 +77,8 @@ p {
 }
 
 .selected {
-    border: 2px solid #FFD700; /* Gold border for selected dice */
-    background-color: #F0E68C; /* Khaki color for selected */
+    border: 2px solid black; /* Gold border for selected dice */
+    background-color: gray; /* Khaki color for selected */
 }
 
 /* Button Styles */
@@ -85,6 +92,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    top: -50px;
 }
 
 button:hover {
@@ -106,6 +115,7 @@ button:hover {
     font-size: 1.5em;
     margin-top: 30px;
     color: #8B0000; /* Dark Red */
+
 }
 
 /* New Game Button */
@@ -122,4 +132,41 @@ button:hover {
 .new-game-button:hover {
     background-color: #A52A2A; /* Brown color */
     transform: translateY(-2px); /* Slight lift on hover */
+}
+
+
+
+#player1, #player2{
+    border: #4E4B3A solid 3px;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin-bottom: -100px;
+    p{
+        position: relative;
+        top: 50%;
+        transform: translateY(-150%);
+    }
+
+}
+
+#player1{
+    margin-left: 5%;
+    
+}
+
+#player2{
+    margin-left: 70%;
+    position: relative;
+    bottom: 100px;
+    
+}
+
+#gameOverDiv{
+    position: relative;
+    top: -100px;
+    button{
+        top: -10px;
+    }
 }
